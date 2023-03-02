@@ -49,6 +49,7 @@ const createDog = async (newDogData) => {
         await newDog.save()
         return true
     } catch (e) {
+        console.log(e)
         return false
     }
 }
@@ -67,10 +68,9 @@ Dog object should remain but the specificed attributes should be changed.
 */
 const updateDog = async (identifier, newDogData) => {
     try {
-        await Dog.updateOne(identifier, newDogData)
-        return true
+        return (await Dog.updateOne(identifier, newDogData)).modifiedCount == 1
     } catch (e) {
-        return false
+        console.log(e)
     }
 }
 /** 
@@ -84,10 +84,9 @@ Remove a dog from the db based on a specific attribute
 */
 const deleteDog = async (identifier) => {
     try {
-        await Dog.deleteOne(identifier)
-        return true
+        return (await Dog.deleteOne(identifier)).deletedCount == 1
     } catch (e) {
-        return false
+        console.log(e)
     }
 }
 
