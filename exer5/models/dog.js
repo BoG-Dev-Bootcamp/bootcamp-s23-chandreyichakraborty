@@ -1,11 +1,26 @@
 import mongoose from "mongoose"
 
 const dogSchema = new mongoose.Schema({
-    name: String,
-    age: Number,
-    breed: String,
-    dateEnter: String,
-    dateAdopt: String
+    name: {
+        type: String,
+        required: true
+    },
+    age:{
+        type: Number,
+        required: true
+    },
+    breed: {
+        type: String,
+        required: true
+    },
+    dateEnter: {
+        type: String,
+        default: Date.now()
+    },
+    dateAdopt: {
+        type: String,
+        default: Date.now()
+    }
 })
 
 export default mongoose.model("Dog", dogSchema)

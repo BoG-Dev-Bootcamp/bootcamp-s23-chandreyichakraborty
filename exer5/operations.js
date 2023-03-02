@@ -49,7 +49,6 @@ const createDog = async (newDogData) => {
         await newDog.save()
         return true
     } catch (e) {
-        console.log(e)
         return false
     }
 }
